@@ -1,6 +1,8 @@
 package co.edu.uniquindio.poo.biblioteca;
 
+import co.edu.uniquindio.poo.biblioteca.controller.HomePageController;
 import co.edu.uniquindio.poo.biblioteca.model.*;
+import co.edu.uniquindio.poo.biblioteca.viewController.HomePageViewController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -53,14 +55,31 @@ public class App extends Application {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(App.class.getResource("login.fxml"));
             AnchorPane rootLayout = (AnchorPane) loader.load();
-            LoginViewController clienteViewController = loader.getController();
-            clienteViewController.setApp(this);
+            LoginViewController loginViewController = loader.getController();
+            loginViewController.setApp(this);
 
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException e) {
             // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    public void openHomePage() {
+        try{
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(App.class.getResource("homePage.fxml"));
+            AnchorPane rootLayout = (AnchorPane) loader.load();
+            HomePageViewController homePageController = loader.getController();
+            homePageController.setApp(this);
+
+            Scene scene = new Scene(rootLayout);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+
+        }catch (IOException e){
             e.printStackTrace();
         }
     }

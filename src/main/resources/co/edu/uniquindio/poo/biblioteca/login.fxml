@@ -52,6 +52,7 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
+                        <Label layoutX="160.0" layoutY="158.0" fx:id="lblNoLogin" />
                             </children>
                         </Pane>
                     </children>

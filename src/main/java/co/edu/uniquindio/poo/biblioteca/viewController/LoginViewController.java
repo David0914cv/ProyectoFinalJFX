@@ -20,6 +20,9 @@ public class LoginViewController {
     LoginController loginController;
 
     @FXML
+    private Label lblNoLogin;
+
+    @FXML
     private ChoiceBox tipoUsuario;
 
     @FXML
@@ -50,7 +53,13 @@ public class LoginViewController {
 
         boolean login=loginController.login(infoLogin);
         if (login){
+            app.openHomePage();
             System.out.println("Login Exitoso");
+        }else {
+            System.out.println("Login Error");
+            lblNoLogin.setText("Login Error");
+            txtCedula.clear();
+            txtContrasenia.clear();
         }
     }
 

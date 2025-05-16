@@ -17,11 +17,6 @@ public class PrimaryController {
     @FXML
     private Button primaryButton;
 
-    /*@FXML
-    void onOpenCrudCliente() {
-        app.openCrudCliente();
-    }*/
-
     @FXML
     void onOpenLogin() {
         app.openLogin();
