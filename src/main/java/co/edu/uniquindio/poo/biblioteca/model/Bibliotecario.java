@@ -1,6 +1,7 @@
 package co.edu.uniquindio.poo.biblioteca.model;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 public class Bibliotecario extends Usuario {
@@ -213,8 +214,54 @@ public class Bibliotecario extends Usuario {
         String fechaInicio = asignarFechaInicio();
         String fechaFin = asignarFechaFin(fechaInicio, usuario);
         Prestamo prestamo = new Prestamo(id, fechaInicio, fechaFin, usuario, this, libro);
-        return biblioteca.agregarPrestamo(prestamo);
+        boolean prestado = biblioteca.agregarPrestamo(prestamo);
+        if (prestado) {
+            actualizarlibro(biblioteca, libro.getCodigo(), EstadoLibro.PRESTADO);
+            boolean deuda = tieneDeuda(biblioteca, usuario);
+            actualizarEstadoUsuario(biblioteca, usuario, deuda);
+        }
+        return prestado;
     }
+
+    public void actualizarlibro(Biblioteca biblioteca, String codigoLibro, EstadoLibro nuevoEstado) {
+        Libro libro = biblioteca.mostrarLibro(codigoLibro);
+        if (libro != null) {
+            libro.setEstado(nuevoEstado);
+            biblioteca.actualizarLibro(codigoLibro, libro);
+        }
+    }
+
+    public boolean tieneDeuda (Biblioteca biblioteca, Usuario usuario) {
+        if (!(usuario instanceof Estudiante) && !(usuario instanceof Docente)) return false;
+        boolean deuda = false;
+        LocalDate actual = LocalDate.now();
+        for (Prestamo prestamo : biblioteca.getListPrestamos()) {
+            if (prestamo.getUsuario().equals(usuario)) {
+                LocalDate fechaFin = LocalDate.parse(prestamo.getFechaFin());
+                if (fechaFin.isBefore(actual)) {
+                    return true;
+                }
+            }
+        } return false;
+    }
+
+    public void actualizarEstadoUsuario(Biblioteca biblioteca, Usuario usuario, Boolean deuda) {
+        EstadoUsuario nuevoEstado = deuda ? EstadoUsuario.EN_MORA : EstadoUsuario.PAZ_Y_SALVO;
+        if (usuario instanceof Docente) {
+        Docente docente = (Docente) usuario;
+        if (docente.getEstadoUsuario() != nuevoEstado){
+            docente.setEstadoUsuario(nuevoEstado);
+            biblioteca.actualizarUsuario(docente.getNumeroIdentificacion(), docente);
+         }
+        } else if (usuario instanceof Estudiante) {
+            Estudiante estudiante = (Estudiante) usuario;
+            if (estudiante.getEstadoUsuario() != nuevoEstado){
+                estudiante.setEstadoUsuario(nuevoEstado);
+                biblioteca.actualizarUsuario(estudiante.getNumeroIdentificacion(), estudiante);
+            }
+        }
+    }
+
 
     @Override
     public String toString() {

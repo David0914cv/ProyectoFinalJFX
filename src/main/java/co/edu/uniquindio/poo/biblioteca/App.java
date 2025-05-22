@@ -129,7 +129,7 @@ public class App extends Application {
     public void inicializarData(){
         Usuario admin1 = new Administrador("Raul yulbrainer","24158799","123","1234");
         biblioteca.agregarUsuario(admin1);
-        Usuario estudiante1 = new Estudiante("David Cuellar","1091884350","456");
+        Usuario estudiante1 = new Estudiante("David Cuellar","1091884350","456", EstadoUsuario.PAZ_Y_SALVO);
         biblioteca.agregarUsuario(estudiante1);
     }
 
