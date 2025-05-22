@@ -1,29 +1,26 @@
 package co.edu.uniquindio.poo.biblioteca.viewController;
 
-import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.ResourceBundle;
-
 import co.edu.uniquindio.poo.biblioteca.App;
 import co.edu.uniquindio.poo.biblioteca.controller.LoginController;
-import co.edu.uniquindio.poo.biblioteca.model.*;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import co.edu.uniquindio.poo.biblioteca.controller.LoginCredentialController;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
-public class LoginViewController {
+import java.util.HashMap;
+import java.util.Map;
 
-
-    LoginController loginController;
-
+public class LoginCredentialViewController {
+    LoginCredentialController loginCredentialController;
     @FXML
     private Label lblNoLogin;
 
     @FXML
     private TextField txtContrasenia;
+
+    @FXML
+    private TextField txtCredencial;
 
     @FXML
     private Button btbLogin;
@@ -40,40 +37,41 @@ public class LoginViewController {
     @FXML
     void initialize() {
         this.app=app;
-        loginController = new LoginController(app.biblioteca);
+        loginCredentialController = new LoginCredentialController(app.biblioteca);
 
     }
 
     private void login() {
 
         Map<String,String> infoLogin=buildUsuarioLogin();
-
-        Map<String,String> login=loginController.login(infoLogin);
-
+        app.setRol("Admin");
+        Map<String,String> login=loginCredentialController.login(infoLogin);
         if (login.get("message").equals("login correct")){
             app.setRol(login.get("rol"));
             app.setUser(infoLogin.get("cedula"));
             app.openHomePage();
             System.out.println("Login Exitoso");
-            System.out.println(login.get("rol"));
         }
         if(login.get("message").equals("password incorrect")){
             System.out.println("Login Error");
-            lblNoLogin.setText("Contraseña incorrecta");
+            lblNoLogin.setText("Contraseña o credencial incorrecta");
             txtCedula.clear();
             txtContrasenia.clear();
+            txtCredencial.clear();
         }
         if (login.get("message").equals("user not exist")){
             System.out.println("Login Error");
             lblNoLogin.setText("Usuario inexistente");
             txtCedula.clear();
             txtContrasenia.clear();
+            txtCredencial.clear();
         }
         if (login.get("message").equals("type incorrect")){
             System.out.println("Login Error");
             lblNoLogin.setText("Tipo de usuario incorrecto");
             txtCedula.clear();
             txtContrasenia.clear();
+            txtCredencial.clear();
         }
     }
 
@@ -82,6 +80,7 @@ public class LoginViewController {
 
         formLogin.put("cedula",txtCedula.getText());
         formLogin.put("contrasenia", txtContrasenia.getText());
+        formLogin.put("credencial",txtCredencial.getText());
 
         return formLogin;
     }

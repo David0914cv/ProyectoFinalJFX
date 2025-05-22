@@ -13,9 +13,11 @@ public class HomePageViewController {
     void initialize(){
         this.app=app;
         homePageController=new HomePageController(app.biblioteca);
+
     }
 
     public void setApp(App app) {
         this.app = app;
+        System.out.println(app.getRol()+"***"+app.getUser());
     }
 }

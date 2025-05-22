@@ -7,7 +7,7 @@
 <VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.biblioteca.viewController.PrimaryController">
     <children>
         <Label text="Bienvenidos a biblioteca UQ" />
-        <Button fx:id="primaryButton" onAction="#onOpenLogin" text="Iniciar" />
+        <Button fx:id="primaryButton" onAction="#onOpenTypeUser" text="Iniciar" />
     </children>
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

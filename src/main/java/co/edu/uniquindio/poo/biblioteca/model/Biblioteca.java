@@ -1,6 +1,7 @@
 package co.edu.uniquindio.poo.biblioteca.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,13 +21,71 @@ public class Biblioteca {
         listLibros = new ArrayList<>();
     }
 
-    public boolean loginUsuario(Map<String,String> formLogin) {
-        boolean resultado = false;
+    public Map<String,String> loginUsuario(Map<String,String> formLogin) {
+        Map<String,String> resultado = new HashMap<>();
+        boolean bandera = false;
 
         for (Usuario usuario : listUsuarios) {
             if(usuario.getNumeroIdentificacion().equals(formLogin.get("cedula")) && usuario.getContrasenia().equals(formLogin.get("contrasenia"))) {
-                resultado = true;
+                if (usuario.getClass() == Administrador.class || usuario.getClass() == Bibliotecario.class){
+                    resultado.put("message","type incorrect") ;
+                    bandera = true;
+                }else {
+                    resultado.put("message","login correct");
+                    resultado.put("rol",usuario.getClass().getSimpleName());
+                    bandera = true;
+                }
             }
+            if (usuario.getNumeroIdentificacion().equals(formLogin.get("cedula")) && !usuario.getContrasenia().equals(formLogin.get("contrasenia"))) {
+                resultado.put("message","password incorrect");
+                bandera = true;
+            }
+        }
+
+        if (!bandera) {
+            resultado.put("message","user not exist");
+        }
+        return resultado;
+    }
+
+    public Map<String,String> loginUsuarioCredencial(Map<String,String> formLogin) {
+        Map<String,String> resultado = new HashMap<>();
+        boolean bandera = false;
+
+        for (Usuario usuario : listUsuarios) {
+            if(usuario.getNumeroIdentificacion().equals(formLogin.get("cedula")) && usuario.getContrasenia().equals(formLogin.get("contrasenia"))) {
+                if (usuario.getClass() == Estudiante.class || usuario.getClass() == Visitante.class || usuario.getClass() == Docente.class){
+                    resultado.put("message","type incorrect") ;
+                }else {
+                    if (usuario.getClass() == Administrador.class){
+                        Administrador user = (Administrador) usuario;
+                        if (user.getCredencial().equals(formLogin.get("credencial"))) {
+                            resultado.put("message","login correct");
+                            resultado.put("rol",usuario.getClass().getSimpleName());
+                        }else {
+                            resultado.put("message","password incorrect");
+                        }
+                    }
+                    if (usuario.getClass() == Bibliotecario.class){
+                        Bibliotecario user = (Bibliotecario) usuario;
+                        if (user.getCredencialBibliotecario().equals(formLogin.get("credencial"))) {
+                            resultado.put("message","login correct");
+                            resultado.put("rol",usuario.getClass().getSimpleName());
+                        }else {
+                            resultado.put("message","password incorrect");
+                        }
+                    }
+                }
+                bandera = true;
+            }
+            if (usuario.getNumeroIdentificacion().equals(formLogin.get("cedula")) && !usuario.getContrasenia().equals(formLogin.get("contrasenia"))) {
+                resultado.put("message","password incorrect");
+                bandera = true;
+            }
+        }
+
+        if (!bandera) {
+            resultado.put("message","user not exist");
         }
         return resultado;
     }

@@ -1,17 +1,15 @@
 package co.edu.uniquindio.poo.biblioteca;
 
 import co.edu.uniquindio.poo.biblioteca.controller.HomePageController;
+import co.edu.uniquindio.poo.biblioteca.controller.LoginCredentialController;
 import co.edu.uniquindio.poo.biblioteca.model.*;
-import co.edu.uniquindio.poo.biblioteca.viewController.HomePageViewController;
+import co.edu.uniquindio.poo.biblioteca.viewController.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import java.io.IOException;
-
-import co.edu.uniquindio.poo.biblioteca.viewController.LoginViewController;
-import co.edu.uniquindio.poo.biblioteca.viewController.PrimaryController;
 
 /**
  * JavaFX App
@@ -20,6 +18,15 @@ public class App extends Application {
 
     private Stage primaryStage;
     public static Biblioteca biblioteca = new Biblioteca("UQ","123");
+    private String rol="";
+    private String user="";
+
+    public void setRol(String rol) {
+        this.rol=rol;
+    }
+    public String getRol() {
+        return rol;
+    }
 
     @Override
     public void start(Stage primaryStage) throws IOException {
@@ -50,6 +57,23 @@ public class App extends Application {
         launch();
     }
 
+    public void openTypeUser() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(App.class.getResource("typeUser.fxml"));
+            AnchorPane rootLayout = (AnchorPane) loader.load();
+            TypeUserViewController typeUserViewController = loader.getController();
+            typeUserViewController.setApp(this);
+
+            Scene scene = new Scene(rootLayout);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
     public void openLogin() {
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -57,6 +81,23 @@ public class App extends Application {
             AnchorPane rootLayout = (AnchorPane) loader.load();
             LoginViewController loginViewController = loader.getController();
             loginViewController.setApp(this);
+
+            Scene scene = new Scene(rootLayout);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    public void openLoginCredential() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(App.class.getResource("loginCredential.fxml"));
+            AnchorPane rootLayout = (AnchorPane) loader.load();
+            LoginCredentialViewController loginCredentialViewController = loader.getController();
+            loginCredentialViewController.setApp(this);
 
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
@@ -88,5 +129,15 @@ public class App extends Application {
     public void inicializarData(){
         Usuario admin1 = new Administrador("Raul yulbrainer","24158799","123","1234");
         biblioteca.agregarUsuario(admin1);
+        Usuario estudiante1 = new Estudiante("David Cuellar","1091884350","456");
+        biblioteca.agregarUsuario(estudiante1);
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
     }
 }

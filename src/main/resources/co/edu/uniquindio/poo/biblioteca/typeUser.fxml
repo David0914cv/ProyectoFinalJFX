@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="276.0" prefWidth="440.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.biblioteca.viewController.TypeUserViewController">
+   <children>
+      <Label layoutX="135.0" layoutY="69.0" text="Tipo de usuario:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+       <ChoiceBox fx:id="choiceBox" layoutX="145.0" layoutY="138.0" prefWidth="150.0">
+           <items>
+               <FXCollections fx:factory="observableArrayList">
+                   <String fx:value="Estudiante" />
+                   <String fx:value="Docente" />
+                   <String fx:value="Bibliotecario" />
+                   <String fx:value="Visitante" />
+                   <String fx:value="Administrador" />
+               </FXCollections>
+           </items>
+       </ChoiceBox>
+      <Button layoutX="186.0" layoutY="196.0" onAction="#onOpenLogin" mnemonicParsing="false" text="Continuar" />
+   </children>
+</AnchorPane>

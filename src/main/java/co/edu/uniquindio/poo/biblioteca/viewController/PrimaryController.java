@@ -18,8 +18,8 @@ public class PrimaryController {
     private Button primaryButton;
 
     @FXML
-    void onOpenLogin() {
-        app.openLogin();
+    void onOpenTypeUser() {
+        app.openTypeUser();
     }
 
     public void setApp(App app) {
