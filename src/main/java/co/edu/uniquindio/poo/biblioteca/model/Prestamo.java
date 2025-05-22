@@ -1,20 +1,24 @@
 package co.edu.uniquindio.poo.biblioteca.model;
 
+import java.time.LocalDate;
+import java.util.UUID;
+
 public class Prestamo {
 
     private String id,fechaInicio,fechaFin;
-    private Estudiante estudiante;
+    private Usuario usuario;
     private Bibliotecario bibliotecario;
     private Libro libro;
 
-    public Prestamo(String id, String fechaInicio, String fechaFin, Estudiante estudiante, Bibliotecario bibliotecario, Libro libro) {
+    public Prestamo(String id, String fechaInicio, String fechaFin, Usuario usuario, Bibliotecario bibliotecario, Libro libro) {
         this.id = id;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
-        this.estudiante = estudiante;
+        this.usuario = usuario;
         this.bibliotecario = bibliotecario;
         this.libro = libro;
     }
+
 
     public String getId() {
         return id;
@@ -28,8 +32,8 @@ public class Prestamo {
         return fechaFin;
     }
 
-    public Estudiante getEstudiante() {
-        return estudiante;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
     public Bibliotecario getBibliotecario() {
@@ -52,8 +56,8 @@ public class Prestamo {
         this.fechaFin = fechaFin;
     }
 
-    public void setEstudiante(Estudiante estudiante) {
-        this.estudiante = estudiante;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public void setBibliotecario(Bibliotecario bibliotecario) {
@@ -70,7 +74,7 @@ public class Prestamo {
                 "id='" + id + '\'' +
                 ", fechaInicio='" + fechaInicio + '\'' +
                 ", fechaFin='" + fechaFin + '\'' +
-                ", estudiante=" + estudiante +
+                ", Prestamista=" + usuario +
                 ", bibliotecario=" + bibliotecario +
                 '}';
     }

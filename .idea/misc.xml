@@ -6,10 +6,11 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/../../Programación 1/ProyectoFinalJFX/pom.xml" />
+        <option value="$PROJECT_DIR$/../../../Programación 1/Java-segundo/ProyectoFinalJFX/pom.xml" />
       </list>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_23" default="true" project-jdk-name="openjdk-23" project-jdk-type="JavaSDK">
-    <output url="file://$PROJECT_DIR$/../../Programación 1/ProyectoFinalJFX" />
+    <output url="file://$PROJECT_DIR$/../../../Programación 1/Programación 1/ProyectoFinalJFX" />
   </component>
 </project>

@@ -216,9 +216,9 @@ public class Biblioteca {
     }
 
     public Prestamo mostrarPrestamo(String idPrestamo) {
-        for (Prestamo p : listPrestamos) {
-            if (p.getId().equals(idPrestamo)) {
-                return p;
+        for (Prestamo prestamo1 : listPrestamos) {
+            if (prestamo1.getId().equals(idPrestamo)) {
+                return prestamo1;
             }
         }
         return null;
@@ -263,12 +263,20 @@ public class Biblioteca {
     }
 
     public Libro mostrarLibro(String codigoLibro) {
-        for (Libro l : listLibros) {
-            if (l.getCodigo().equals(codigoLibro)) {
-                return l;
+        for (Libro book : listLibros) {
+            if (book.getCodigo().equals(codigoLibro)) {
+                return book;
             }
         }
         return null;
+    }
+
+    public boolean libroDisponible(String codigoLibro) {
+        Libro libro = mostrarLibro(codigoLibro);
+        if (libro != null && libro.getEstado() == EstadoLibro.DISPONIBLE) {
+            return true;
+        }
+        return false;
     }
 
 
