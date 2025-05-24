@@ -6,5 +6,4 @@ module co.edu.uniquindio.poo.biblioteca {
     exports co.edu.uniquindio.poo.biblioteca;
     exports co.edu.uniquindio.poo.biblioteca.viewController;
     opens co.edu.uniquindio.poo.biblioteca.viewController to javafx.fxml;
-
 }

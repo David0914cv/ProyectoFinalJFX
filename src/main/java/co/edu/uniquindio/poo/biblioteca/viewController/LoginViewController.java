@@ -39,9 +39,7 @@ public class LoginViewController {
 
     @FXML
     void initialize() {
-        this.app=app;
         loginController = new LoginController(app.biblioteca);
-
     }
 
     private void login() {

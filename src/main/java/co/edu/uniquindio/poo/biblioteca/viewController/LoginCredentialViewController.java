@@ -36,7 +36,7 @@ public class LoginCredentialViewController {
 
     @FXML
     void initialize() {
-        this.app=app;
+
         loginCredentialController = new LoginCredentialController(app.biblioteca);
 
     }

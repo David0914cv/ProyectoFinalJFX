@@ -13,6 +13,7 @@ public class Biblioteca {
     private List<Libro> listLibros;
     private List<Libro> listLibrosPrestados;
     private List<Usuario> listUsuariosEnMora;
+    private List<SolicitudPrestamo> listSolicitudPrestamos;
 
     public Biblioteca(String nombre, String codigo) {
         this.nombre = nombre;
@@ -23,6 +24,7 @@ public class Biblioteca {
         listLibros = new ArrayList<>();
         listLibrosPrestados = new ArrayList<>();
         listUsuariosEnMora = new ArrayList<>();
+        listSolicitudPrestamos = new ArrayList<>();
     }
 
     public Map<String,String> loginUsuario(Map<String,String> formLogin) {
@@ -402,6 +404,14 @@ public class Biblioteca {
 
     public void setListUsuariosEnMora(List<Usuario> listUsuariosEnMora) {
         this.listUsuariosEnMora = listUsuariosEnMora;
+    }
+
+    public List<SolicitudPrestamo> getListSolicitudPrestamos() {
+        return listSolicitudPrestamos;
+    }
+
+    public void agregarSolicitudPrestamo(SolicitudPrestamo solicitudPrestamo) {
+        listSolicitudPrestamos.add(solicitudPrestamo);
     }
 
     @Override

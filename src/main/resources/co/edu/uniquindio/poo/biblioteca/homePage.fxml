@@ -4,13 +4,48 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.biblioteca.viewController.HomePageViewController">
-   <children>
-      <Label layoutX="238.0" layoutY="183.0" text="Home Page">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-   </children>
+<AnchorPane prefHeight="632.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.biblioteca.viewController.HomePageViewController">
+   <TableView fx:id="tablaLibros" layoutX="86.0" layoutY="116.0" prefHeight="127.0" prefWidth="428.0">
+      <columns>
+         <TableColumn fx:id="colTitulo" prefWidth="141.0" text="Título" />
+         <TableColumn fx:id="colAutor" prefWidth="147.0" text="Autor" />
+         <TableColumn fx:id="colGenero" prefWidth="138.0" text="Género" />
+      </columns>
+   </TableView>
+   <TableView fx:id="tablaLibrosDigitales" layoutX="86.0" layoutY="286.0" prefHeight="127.0" prefWidth="428.0">
+      <columns>
+         <TableColumn fx:id="colTituloD" prefWidth="107.0" text="Título" />
+         <TableColumn fx:id="colGeneroD" prefWidth="107.0" text="Género" />
+         <TableColumn fx:id="colEnlace" prefWidth="106.0" text="Autor" />
+         <TableColumn fx:id="colAutorD" prefWidth="107.0" text="Enlace" />
+      </columns>
+   </TableView>
+   <Label layoutX="86.0" layoutY="87.0" text="Libros Físicos">
+      <font>
+         <Font name="System Bold" size="12.0" />
+      </font>
+   </Label>
+   <Label layoutX="86.0" layoutY="259.0" text="Libros Digitales">
+      <font>
+         <Font name="System Bold" size="12.0" />
+      </font>
+   </Label>
+   <Hyperlink onAction="#onLogout" layoutX="437.0" layoutY="84.0" text="Cerrar sesión" />
+   <Label layoutX="237.0" layoutY="31.0" text="Listado libros">
+      <font>
+         <Font name="System Bold" size="20.0" />
+      </font>
+   </Label>
+   <TableView fx:id="tablaLibrosReferencia" layoutX="86.0" layoutY="457.0" prefHeight="127.0" prefWidth="428.0">
+      <columns>
+         <TableColumn fx:id="colTituloR" prefWidth="138.0" text="Título" />
+         <TableColumn fx:id="colGeneroR" prefWidth="151.0" text="Género" />
+         <TableColumn fx:id="colAutorR" prefWidth="138.0" text="Autor" />
+      </columns>
+   </TableView>
+   <Label layoutX="86.0" layoutY="430.0" text="Libros de referencia">
+      <font>
+         <Font name="System Bold" size="12.0" />
+      </font>
+   </Label>
 </AnchorPane>
