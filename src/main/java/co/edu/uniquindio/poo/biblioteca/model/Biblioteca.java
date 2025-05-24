@@ -11,6 +11,8 @@ public class Biblioteca {
     private List<Devolucion> listDevoluciones;
     private List<Prestamo> listPrestamos;
     private List<Libro> listLibros;
+    private List<Libro> listLibrosPrestados;
+    private List<Usuario> listUsuariosEnMora;
 
     public Biblioteca(String nombre, String codigo) {
         this.nombre = nombre;
@@ -19,6 +21,8 @@ public class Biblioteca {
         listDevoluciones = new ArrayList<>();
         listPrestamos = new ArrayList<>();
         listLibros = new ArrayList<>();
+        listLibrosPrestados = new ArrayList<>();
+        listUsuariosEnMora = new ArrayList<>();
     }
 
     public Map<String,String> loginUsuario(Map<String,String> formLogin) {
@@ -271,6 +275,61 @@ public class Biblioteca {
         return null;
     }
 
+    public boolean verificarLibroPrestadoExiste(Libro libro) {
+        for (Libro book : listLibrosPrestados) {
+            if (libro.getCodigo().equals(book.getCodigo())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean agregarLibroPrestado(Libro libro) {
+        if (verificarLibroPrestadoExiste(libro)) {
+            return false;
+        } else {
+            listLibrosPrestados.add(libro);
+            return true;
+        }
+    }
+
+    public boolean eliminarLibroPrestado(String codigoLibro) {
+        for (int i = 0; i < listLibrosPrestados.size(); i++) {
+            if (listLibrosPrestados.get(i).getCodigo().equals(codigoLibro)) {
+                listLibrosPrestados.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean verificarUsuarioEnMoraExiste(Usuario usuario) {
+        for (Usuario user : listUsuariosEnMora) {
+            if(usuario.getNumeroIdentificacion().equals(user.getNumeroIdentificacion())) {
+                return true;
+            }
+        } return false;
+    }
+
+    public boolean agregarUsuarioEnMora(Usuario usuario) {
+        if (verificarUsuarioEnMoraExiste(usuario)) {
+            return false;
+        }
+        else {
+            listUsuariosEnMora.add(usuario);
+            return true;
+        }
+    }
+
+    public boolean eliminarUsuarioEnMora(String numeroIdentificacionUsuario) {
+        for (int i = 0; i < listUsuariosEnMora.size(); i++) {
+            if(listUsuariosEnMora.get(i).getNumeroIdentificacion().equals(numeroIdentificacionUsuario)) {
+                listUsuariosEnMora.remove(i);
+                return true;
+            }
+        } return false;
+    }
+
     public boolean libroDisponible(String codigoLibro) {
         Libro libro = mostrarLibro(codigoLibro);
         if (libro != null && libro.getEstado() == EstadoLibro.DISPONIBLE) {
@@ -280,36 +339,69 @@ public class Biblioteca {
     }
 
 
+
     public String getNombre() {
         return nombre;
-    }
-
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public List<Usuario> getListUsuarios() {
-        return listUsuarios;
-    }
-
-    public List<Devolucion> getListDevoluciones() {
-        return listDevoluciones;
-    }
-
-    public List<Prestamo> getListPrestamos() {
-        return listPrestamos;
-    }
-
-    public List<Libro> getListLibros() {
-        return listLibros;
     }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
+    public String getCodigo() {
+        return codigo;
+    }
+
     public void setCodigo(String codigo) {
         this.codigo = codigo;
+    }
+
+    public List<Usuario> getListUsuarios() {
+        return listUsuarios;
+    }
+
+    public void setListUsuarios(List<Usuario> listUsuarios) {
+        this.listUsuarios = listUsuarios;
+    }
+
+    public List<Devolucion> getListDevoluciones() {
+        return listDevoluciones;
+    }
+
+    public void setListDevoluciones(List<Devolucion> listDevoluciones) {
+        this.listDevoluciones = listDevoluciones;
+    }
+
+    public List<Prestamo> getListPrestamos() {
+        return listPrestamos;
+    }
+
+    public void setListPrestamos(List<Prestamo> listPrestamos) {
+        this.listPrestamos = listPrestamos;
+    }
+
+    public List<Libro> getListLibros() {
+        return listLibros;
+    }
+
+    public void setListLibros(List<Libro> listLibros) {
+        this.listLibros = listLibros;
+    }
+
+    public List<Libro> getListLibrosPrestados() {
+        return listLibrosPrestados;
+    }
+
+    public void setListLibrosPrestados(List<Libro> listLibrosPrestados) {
+        this.listLibrosPrestados = listLibrosPrestados;
+    }
+
+    public List<Usuario> getListUsuariosEnMora() {
+        return listUsuariosEnMora;
+    }
+
+    public void setListUsuariosEnMora(List<Usuario> listUsuariosEnMora) {
+        this.listUsuariosEnMora = listUsuariosEnMora;
     }
 
     @Override

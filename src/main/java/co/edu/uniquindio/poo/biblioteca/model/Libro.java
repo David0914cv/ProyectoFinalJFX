@@ -2,6 +2,7 @@ package co.edu.uniquindio.poo.biblioteca.model;
 
 public class Libro {
     private String codigo,titulo,autor,genero,anioPublicacion;
+    private int cantidadVecesPrestado;
     private EstadoLibro estado;
 
     public Libro(String codigo, String titulo, String autor, String genero, String anioPublicacion, EstadoLibro estado) {
@@ -11,6 +12,7 @@ public class Libro {
         this.genero = genero;
         this.anioPublicacion = anioPublicacion;
         this.estado = estado;
+        this.cantidadVecesPrestado = 0;
     }
 
     public String getCodigo() {
@@ -61,6 +63,10 @@ public class Libro {
         this.estado = estado;
     }
 
+    public int getCantidadVecesPrestado() {return cantidadVecesPrestado;}
+
+    public void setCantidadVecesPrestado( int cantidadVecesPrestado) {this.cantidadVecesPrestado = cantidadVecesPrestado;}
+
     @Override
     public String toString() {
         return "Libro{" +
@@ -69,6 +75,7 @@ public class Libro {
                 ", autor='" + autor + '\'' +
                 ", genero='" + genero + '\'' +
                 ", anioPublicacion='" + anioPublicacion + '\'' +
+                ", cantidadVecesPrestado=" + cantidadVecesPrestado +
                 ", estado=" + estado +
                 '}';
     }

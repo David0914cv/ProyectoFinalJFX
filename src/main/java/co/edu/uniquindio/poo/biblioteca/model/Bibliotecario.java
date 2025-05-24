@@ -1,6 +1,7 @@
 package co.edu.uniquindio.poo.biblioteca.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -126,21 +127,21 @@ public class Bibliotecario extends Usuario {
         return null;
     }
 
-    public boolean agregarLibro (Biblioteca biblioteca, Libro libro) {
+    public boolean agregarLibro(Biblioteca biblioteca, Libro libro) {
         if (biblioteca == null || libro == null) {
             return false;
         }
         return biblioteca.agregarLibro(libro);
     }
 
-    public boolean eliminarLibro (Biblioteca biblioteca, String codigoLibro) {
+    public boolean eliminarLibro(Biblioteca biblioteca, String codigoLibro) {
         if (biblioteca == null || codigoLibro == null) {
             return false;
         }
         return biblioteca.eliminarLibro(codigoLibro);
     }
 
-    public boolean actualizarLibro (Biblioteca biblioteca,String codigoLibro, Libro libro) {
+    public boolean actualizarLibro(Biblioteca biblioteca, String codigoLibro, Libro libro) {
         if (biblioteca == null || codigoLibro == null) {
             return false;
         }
@@ -154,34 +155,35 @@ public class Bibliotecario extends Usuario {
         return biblioteca.mostrarLibro(codigoLibro);
     }
 
-    public boolean posibilidadPrestamoEstudiante (Biblioteca biblioteca, String numeroIdentificacionEstudiante) {
+    public boolean posibilidadPrestamoEstudiante(Biblioteca biblioteca, String numeroIdentificacionEstudiante) {
         if (biblioteca == null || numeroIdentificacionEstudiante == null) return false;
         Usuario usuario = biblioteca.mostrarUsuario(numeroIdentificacionEstudiante);
         if (usuario instanceof Estudiante) {
             Estudiante estudiante = (Estudiante) usuario;
-            if (estudiante.getCantidadlibrosPrestados() > 5 || estudiante.getEstadoUsuario() == EstadoUsuario.EN_MORA){
+            if (estudiante.getCantidadlibrosPrestados() > 5 || estudiante.getEstadoUsuario() == EstadoUsuario.EN_MORA) {
                 return false;
             }
-        } return true;
+        }
+        return true;
     }
 
-    public boolean posibilidadPrestamoDocente (Biblioteca biblioteca, String numeroIdentificacionDocente) {
+    public boolean posibilidadPrestamoDocente(Biblioteca biblioteca, String numeroIdentificacionDocente) {
         if (biblioteca == null || numeroIdentificacionDocente == null) return false;
         Usuario usuario = biblioteca.mostrarUsuario(numeroIdentificacionDocente);
         if (usuario instanceof Docente) {
             Docente docente = (Docente) usuario;
-            if (docente.getEstadoUsuario() == EstadoUsuario.EN_MORA){
+            if (docente.getEstadoUsuario() == EstadoUsuario.EN_MORA) {
                 return false;
             }
-        } return true;
+        }
+        return true;
     }
 
-    public boolean validarPrestamo (Biblioteca biblioteca, Usuario usuario) {
+    public boolean validarPrestamo(Biblioteca biblioteca, Usuario usuario) {
         if (biblioteca == null || usuario == null) return false;
         if (usuario instanceof Docente) {
             return posibilidadPrestamoDocente(biblioteca, usuario.getNumeroIdentificacion());
-        }
-        else if (usuario instanceof Estudiante) {
+        } else if (usuario instanceof Estudiante) {
             return posibilidadPrestamoEstudiante(biblioteca, usuario.getNumeroIdentificacion());
         }
         return false;
@@ -191,7 +193,7 @@ public class Bibliotecario extends Usuario {
         return UUID.randomUUID().toString();
     }
 
-    public String asignarFechaInicio() {
+    public String asignarFechaActual() {
         return LocalDate.now().toString();
     }
 
@@ -206,23 +208,6 @@ public class Bibliotecario extends Usuario {
         }
     }
 
-
-    public boolean crearPrestamo (Biblioteca biblioteca, Usuario usuario, Libro libro) {
-        if (!validarPrestamo(biblioteca, usuario)) return false;
-        if (!biblioteca.libroDisponible(libro.getCodigo())) return false;
-        String id = asignarId();
-        String fechaInicio = asignarFechaInicio();
-        String fechaFin = asignarFechaFin(fechaInicio, usuario);
-        Prestamo prestamo = new Prestamo(id, fechaInicio, fechaFin, usuario, this, libro);
-        boolean prestado = biblioteca.agregarPrestamo(prestamo);
-        if (prestado) {
-            actualizarlibro(biblioteca, libro.getCodigo(), EstadoLibro.PRESTADO);
-            boolean deuda = tieneDeuda(biblioteca, usuario);
-            actualizarEstadoUsuario(biblioteca, usuario, deuda);
-        }
-        return prestado;
-    }
-
     public void actualizarlibro(Biblioteca biblioteca, String codigoLibro, EstadoLibro nuevoEstado) {
         Libro libro = biblioteca.mostrarLibro(codigoLibro);
         if (libro != null) {
@@ -231,7 +216,7 @@ public class Bibliotecario extends Usuario {
         }
     }
 
-    public boolean tieneDeuda (Biblioteca biblioteca, Usuario usuario) {
+    public boolean tieneDeuda(Biblioteca biblioteca, Usuario usuario) {
         if (!(usuario instanceof Estudiante) && !(usuario instanceof Docente)) return false;
         boolean deuda = false;
         LocalDate actual = LocalDate.now();
@@ -242,24 +227,128 @@ public class Bibliotecario extends Usuario {
                     return true;
                 }
             }
-        } return false;
+        }
+        return false;
     }
 
     public void actualizarEstadoUsuario(Biblioteca biblioteca, Usuario usuario, Boolean deuda) {
         EstadoUsuario nuevoEstado = deuda ? EstadoUsuario.EN_MORA : EstadoUsuario.PAZ_Y_SALVO;
         if (usuario instanceof Docente) {
-        Docente docente = (Docente) usuario;
-        if (docente.getEstadoUsuario() != nuevoEstado){
-            docente.setEstadoUsuario(nuevoEstado);
-            biblioteca.actualizarUsuario(docente.getNumeroIdentificacion(), docente);
-         }
+            Docente docente = (Docente) usuario;
+            if (docente.getEstadoUsuario() != nuevoEstado) {
+                docente.setEstadoUsuario(nuevoEstado);
+                biblioteca.actualizarUsuario(docente.getNumeroIdentificacion(), docente);
+            }
         } else if (usuario instanceof Estudiante) {
             Estudiante estudiante = (Estudiante) usuario;
-            if (estudiante.getEstadoUsuario() != nuevoEstado){
+            if (estudiante.getEstadoUsuario() != nuevoEstado) {
                 estudiante.setEstadoUsuario(nuevoEstado);
                 biblioteca.actualizarUsuario(estudiante.getNumeroIdentificacion(), estudiante);
             }
         }
+    }
+
+
+    public boolean crearPrestamo(Biblioteca biblioteca, Usuario usuario, Libro libro) {
+        if (libro instanceof LibroReferencia) return false;
+        if (!validarPrestamo(biblioteca, usuario)) return false;
+        if (!biblioteca.libroDisponible(libro.getCodigo())) return false;
+        String id = asignarId();
+        String fechaInicio = asignarFechaActual();
+        String fechaFin = asignarFechaFin(fechaInicio, usuario);
+        Prestamo prestamo = new Prestamo(id, fechaInicio, fechaFin, usuario, this, libro);
+        boolean prestado = biblioteca.agregarPrestamo(prestamo);
+        if (prestado) {
+            actualizarlibro(biblioteca, libro.getCodigo(), EstadoLibro.PRESTADO);
+            boolean deuda = tieneDeuda(biblioteca, usuario);
+            actualizarEstadoUsuario(biblioteca, usuario, deuda);
+            if (deuda) {
+                biblioteca.agregarUsuarioEnMora(usuario);
+            }
+            libro.setCantidadVecesPrestado(libro.getCantidadVecesPrestado() + 1);
+            biblioteca.actualizarLibro(libro.getCodigo(), libro);
+            biblioteca.agregarLibroPrestado(libro);
+            if (usuario instanceof Estudiante) {
+                Estudiante estudiante = (Estudiante) usuario;
+                estudiante.setCantidadlibrosPrestados(estudiante.getCantidadlibrosPrestados() + 1);
+                biblioteca.actualizarUsuario(estudiante.getNumeroIdentificacion(), estudiante);
+            }
+        }
+        return prestado;
+    }
+
+
+    public boolean verificarprestamoActivo(Biblioteca biblioteca, Usuario usuario, Libro libro) {
+        for (Prestamo prestamo : biblioteca.getListPrestamos()) {
+            if (prestamo.getUsuario().equals(usuario) && prestamo.getLibro().equals(libro)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    public boolean crearDevolucion(Biblioteca biblioteca, Usuario usuario, Libro libro, String observaciones) {
+        if (biblioteca.libroDisponible(libro.getCodigo())) return false;
+        if (verificarprestamoActivo(biblioteca, usuario, libro)) {
+            Prestamo prestamoActivo = null;
+            for (Prestamo prestamo : biblioteca.getListPrestamos()) {
+                if (prestamo.getUsuario().equals(usuario) && prestamo.getLibro().equals(libro)) {
+                    prestamoActivo = prestamo;
+                    break;
+                }
+            }
+            if (prestamoActivo == null) {
+                return false;
+            }
+            String id = asignarId();
+            String fechaDevolucion = asignarFechaActual();
+            Devolucion devolucion = new Devolucion(id, fechaDevolucion, observaciones, prestamoActivo);
+            actualizarlibro(biblioteca, libro.getCodigo(), EstadoLibro.DISPONIBLE);
+
+            if (usuario instanceof Estudiante) {
+                Estudiante estudiante = (Estudiante) usuario;
+                estudiante.setCantidadlibrosPrestados(estudiante.getCantidadlibrosPrestados() - 1);
+                biblioteca.actualizarUsuario(estudiante.getNumeroIdentificacion(), estudiante);
+            }
+
+            biblioteca.eliminarLibroPrestado(libro.getCodigo());
+            biblioteca.eliminarPrestamo(prestamoActivo.getId());
+            boolean deuda = tieneDeuda(biblioteca, usuario);
+            actualizarEstadoUsuario(biblioteca, usuario, deuda);
+            return biblioteca.agregarDevolucion(devolucion);
+
+        }
+
+        return false;
+
+    }
+
+    public Libro libroMasPrestado(Biblioteca biblioteca) {
+        Libro libroMasPrestado = null;
+        int masPrestado = 0;
+        for (Libro libro : biblioteca.getListLibros()) {
+            if (libro.getCantidadVecesPrestado() > masPrestado) {
+                libroMasPrestado = libro;
+                masPrestado = libro.getCantidadVecesPrestado();
+            }
+
+        }
+        return libroMasPrestado;
+    }
+
+    public String crearReporte(Biblioteca biblioteca) {
+        StringBuilder reporte = new StringBuilder();
+        reporte.append("Libro más prestado: ").append(libroMasPrestado(biblioteca));
+        reporte.append("Libros prestados:\n");
+        for (Libro libro : biblioteca.getListLibrosPrestados()) {
+            reporte.append(libro.getTitulo()).append("\t").append(libro.getCodigo()).append("\n");
+        }
+        reporte.append("Usuarios en mora:\n");
+        for (Usuario usuario : biblioteca.getListUsuariosEnMora()) {
+            reporte.append(usuario.getNombre()).append("\t").append(usuario.getNumeroIdentificacion()).append("\n");
+        }
+        return reporte.toString();
     }
 
 
