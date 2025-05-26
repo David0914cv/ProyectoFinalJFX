@@ -5,6 +5,13 @@ public class Devolucion {
     private String id,fechaDevolucion,observaciones;
     private Prestamo prestamo;
 
+    /**
+     * constructor de la clase Devolucion
+     * @param id
+     * @param fechaDevolucion
+     * @param observaciones
+     * @param prestamo
+     */
     public Devolucion(String id, String fechaDevolucion, String observaciones, Prestamo prestamo) {
         this.id = id;
         this.fechaDevolucion = fechaDevolucion;

@@ -4,7 +4,17 @@ public class LibroFisico extends Libro {
 
     private String numeroPaginas,editorial,ubicacionBiblioteca;
 
-
+    /**
+     * constructor de la clase LibroFisico
+     * @param codigo
+     * @param titulo
+     * @param autor
+     * @param genero
+     * @param anioPublicacion
+     * @param numeroPaginas
+     * @param editorial
+     * @param ubicacionBiblioteca
+     */
     public LibroFisico(String codigo, String titulo, String autor, String genero, String anioPublicacion, String numeroPaginas, String editorial, String ubicacionBiblioteca) {
         super(codigo, titulo, autor, genero, anioPublicacion);
         this.numeroPaginas = numeroPaginas;

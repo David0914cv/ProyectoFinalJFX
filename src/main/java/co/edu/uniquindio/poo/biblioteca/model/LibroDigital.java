@@ -5,6 +5,16 @@ public class LibroDigital extends Libro {
     private FormatoLibro formato;
     private String enlace;
 
+    /**
+     * constructor de la clase LibroDigital
+     * @param codigo
+     * @param titulo
+     * @param autor
+     * @param genero
+     * @param anioPublicacion
+     * @param formato
+     * @param enlace
+     */
     public LibroDigital(String codigo, String titulo, String autor, String genero, String anioPublicacion, FormatoLibro formato, String enlace) {
         super(codigo, titulo, autor, genero, anioPublicacion);
         this.formato = formato;

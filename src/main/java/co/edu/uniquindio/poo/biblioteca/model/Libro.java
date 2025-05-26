@@ -5,6 +5,14 @@ public class Libro {
     private int cantidadVecesPrestado;
     private EstadoLibro estado;
 
+    /**
+     * constructor de la clase Libro
+     * @param codigo
+     * @param titulo
+     * @param autor
+     * @param genero
+     * @param anioPublicacion
+     */
     public Libro(String codigo, String titulo, String autor, String genero, String anioPublicacion) {
         this.codigo = codigo;
         this.titulo = titulo;

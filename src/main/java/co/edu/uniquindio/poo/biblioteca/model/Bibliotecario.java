@@ -10,7 +10,7 @@ public class Bibliotecario extends Usuario {
     private String credencialBibliotecario;
 
     /**
-     * constructor de la clase bibliotecario
+     * constructor de la clase Bibliotecario
      * @param nombre
      * @param numeroIdentificacion
      * @param contrasenia
@@ -451,6 +451,7 @@ public class Bibliotecario extends Usuario {
      */
     public void aumentarVecesPrestado(Biblioteca biblioteca, Libro libro) {
             libro.setCantidadVecesPrestado(libro.getCantidadVecesPrestado() + 1);
+            biblioteca.actualizarLibro(libro.getCodigo(), libro);
     }
 
     /**
@@ -462,6 +463,7 @@ public class Bibliotecario extends Usuario {
             if (usuario instanceof Estudiante) {
                 Estudiante estudiante = (Estudiante) usuario;
                 estudiante.setCantidadlibrosPrestados(estudiante.getCantidadlibrosPrestados() + 1);
+                biblioteca.actualizarUsuario(estudiante.getNumeroIdentificacion(), estudiante);
         }
     }
 

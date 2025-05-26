@@ -4,6 +4,12 @@ public class Estudiante extends Usuario{
     private int cantidadlibrosPrestados;
     private EstadoUsuario estadoUsuario;
 
+    /**
+     * constructor de la clase Estudiante
+     * @param nombre
+     * @param numeroIdentificacion
+     * @param contrasenia
+     */
     public Estudiante(String nombre, String numeroIdentificacion, String contrasenia) {
         super(nombre, numeroIdentificacion, contrasenia);
         this.cantidadlibrosPrestados = 0;

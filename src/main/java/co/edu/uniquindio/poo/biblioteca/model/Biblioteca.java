@@ -15,6 +15,11 @@ public class Biblioteca {
     private List<Usuario> listUsuariosEnMora;
     private List<SolicitudPrestamo> listSolicitudPrestamos;
 
+    /**
+     * constructor de la clase Biblioteca
+     * @param nombre
+     * @param codigo
+     */
     public Biblioteca(String nombre, String codigo) {
         this.nombre = nombre;
         this.codigo = codigo;

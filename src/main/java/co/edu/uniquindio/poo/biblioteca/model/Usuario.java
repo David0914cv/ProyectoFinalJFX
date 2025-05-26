@@ -4,6 +4,12 @@ public class Usuario {
 
     private String nombre,numeroIdentificacion,contrasenia;
 
+    /**
+     * constructor de la clase Usuario
+     * @param nombre
+     * @param numeroIdentificacion
+     * @param contrasenia
+     */
     public Usuario(String nombre, String numeroIdentificacion, String contrasenia){
         this.nombre = nombre;
         this.numeroIdentificacion = numeroIdentificacion;

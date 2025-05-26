@@ -10,6 +10,15 @@ public class Prestamo {
     private Bibliotecario bibliotecario;
     private Libro libro;
 
+    /**
+     * constructor de la clase Prestamo
+     * @param id
+     * @param fechaInicio
+     * @param fechaFin
+     * @param usuario
+     * @param bibliotecario
+     * @param libro
+     */
     public Prestamo(String id, String fechaInicio, String fechaFin, Usuario usuario, Bibliotecario bibliotecario, Libro libro) {
         this.id = id;
         this.fechaInicio = fechaInicio;

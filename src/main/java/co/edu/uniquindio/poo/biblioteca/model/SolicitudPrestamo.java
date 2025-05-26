@@ -11,6 +11,13 @@ public class SolicitudPrestamo {
     private TiempoPrestamo tiempoPrestamo;
     private EstadoSolicitud estado;
 
+    /**
+     * constructor de la clase SolicitudPrestamo
+     * @param id
+     * @param solicitante
+     * @param libroSolicitado
+     * @param tiempoPrestamo
+     */
     public SolicitudPrestamo(String id, Usuario solicitante, LibroFisico libroSolicitado, TiempoPrestamo tiempoPrestamo) {
         this.id = id;
         this.solicitante = solicitante;
