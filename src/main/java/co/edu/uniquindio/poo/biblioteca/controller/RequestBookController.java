@@ -27,7 +27,7 @@ public class RequestBookController {
             tiempoPrestamo = TiempoPrestamo.CINCO_DIAS;
         }
         if (tiempo.equals("Entregar en 10 dias")){
-            tiempoPrestamo = TiempoPrestamo.DIEZ_DIAZ;
+            tiempoPrestamo = TiempoPrestamo.DIEZ_DIAS;
         }
 
         SolicitudPrestamo solicitudPrestamo = new SolicitudPrestamo(id,user,libro,tiempoPrestamo);
