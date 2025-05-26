@@ -2,8 +2,11 @@ package co.edu.uniquindio.poo.biblioteca.viewController;
 
 import co.edu.uniquindio.poo.biblioteca.App;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 public class TypeUserViewController {
 
@@ -18,12 +21,25 @@ public class TypeUserViewController {
     }
 
     public void openLogin(){
-        if (buildOption().equals("Bibliotecario") || buildOption().equals("Administrador")){
-            app.openLoginCredential();
+        if (buildOption() == null){
+            Stage stage = (Stage) choiceBox.getScene().getWindow();
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(stage);
+            alert.initModality(Modality.WINDOW_MODAL);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Seleccione una opción");
+            alert.showAndWait();
+        }else {
+            if (buildOption().equals("Bibliotecario") || buildOption().equals("Administrador")){
+                app.openLoginCredential();
+            }
+            if (buildOption().equals("Estudiante") || buildOption().equals("Docente") || buildOption().equals("Visitante")){
+                app.openLogin();
+            }
         }
-        if (buildOption().equals("Estudiante") || buildOption().equals("Docente") || buildOption().equals("Visitante")){
-            app.openLogin();
-        }
+
        /*app.openLogin();*/
     }
 

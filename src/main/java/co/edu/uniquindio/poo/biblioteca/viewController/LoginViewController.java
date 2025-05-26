@@ -23,7 +23,7 @@ public class LoginViewController {
     private Label lblNoLogin;
 
     @FXML
-    private TextField txtContrasenia;
+    private PasswordField txtContrasenia;
 
     @FXML
     private Button btbLogin;

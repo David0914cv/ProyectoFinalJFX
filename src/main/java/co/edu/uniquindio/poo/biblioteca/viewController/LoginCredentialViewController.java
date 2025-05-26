@@ -6,6 +6,7 @@ import co.edu.uniquindio.poo.biblioteca.controller.LoginCredentialController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 import java.util.HashMap;
@@ -17,10 +18,10 @@ public class LoginCredentialViewController {
     private Label lblNoLogin;
 
     @FXML
-    private TextField txtContrasenia;
+    private PasswordField txtContrasenia;
 
     @FXML
-    private TextField txtCredencial;
+    private PasswordField txtCredencial;
 
     @FXML
     private Button btbLogin;
@@ -51,7 +52,7 @@ public class LoginCredentialViewController {
             app.setUser(infoLogin.get("cedula"));
 
             if (login.get("rol").equals("Administrador")){
-                System.out.println("Admin");
+                app.openHomePageAdmin();
             }
             if (login.get("rol").equals("Bibliotecario")){
                 app.openHomePageBibliotecario();

@@ -88,7 +88,7 @@ public class HomePageBibliotecarioViewController {
                                 fechaFin=LocalDate.now();
                             } else if (solicitudPrestamo.getTiempoPrestamo() == TiempoPrestamo.CINCO_DIAS) {
                                 fechaFin= LocalDate.now().plusDays(5);
-                            } else if (solicitudPrestamo.getTiempoPrestamo() == TiempoPrestamo.DIEZ_DIAZ) {
+                            } else if (solicitudPrestamo.getTiempoPrestamo() == TiempoPrestamo.DIEZ_DIAS) {
                                 fechaFin= LocalDate.now().plusDays(10);
                             }
                             for (Usuario usuario:homePageBibliotecarioController.getListaUsuarios()){

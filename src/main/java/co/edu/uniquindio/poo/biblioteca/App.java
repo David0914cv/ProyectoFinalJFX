@@ -334,6 +334,23 @@ public class App extends Application {
         }
     }
 
+    public void openHomePageAdmin() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(App.class.getResource("homePageAdmin.fxml"));
+            AnchorPane rootLayout = (AnchorPane) loader.load();
+            HomePageAdminViewController homePageAdminViewController = loader.getController();
+            homePageAdminViewController.setApp(this);
+
+            Scene scene = new Scene(rootLayout);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
 
     //servicios
     public void inicializarData(){
@@ -361,7 +378,7 @@ public class App extends Application {
         biblioteca.agregarLibro(libro3);
         biblioteca.agregarLibro(libro4);
         biblioteca.agregarLibro(libro5);
-        
+
 
     }
 
