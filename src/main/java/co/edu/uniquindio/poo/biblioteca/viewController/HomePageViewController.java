@@ -70,6 +70,16 @@ public class HomePageViewController {
     }
 
     @FXML
+    void onOpenLending(){
+        app.openLendingsUser();
+    }
+
+    @FXML
+    void onOpenRequestsUser(){
+        app.openRequestsUser();
+    }
+
+    @FXML
     void initialize(){
 
         colTitulo.setCellValueFactory(new PropertyValueFactory<>("titulo"));
@@ -96,8 +106,22 @@ public class HomePageViewController {
             if (event.getClickCount() == 1) {
                 LibroFisico libroSeleccionado = tablaLibros.getSelectionModel().getSelectedItem();
                 if (libroSeleccionado != null) {
-                    System.out.println("Libro seleccionado: " + libroSeleccionado.getTitulo());
-                    app.openRequestBook(libroSeleccionado);
+                    if (app.getRol().equals("Visitante")){
+                        Stage stage = (Stage) tablaLibros.getScene().getWindow();
+
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.initOwner(stage);
+                        alert.initModality(Modality.WINDOW_MODAL);
+                        alert.setTitle("Información importante!");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Solo pudes ver los libros desde la biblioteca");
+                        alert.showAndWait();
+
+                    }else {
+                        System.out.println("Libro seleccionado: " + libroSeleccionado.getTitulo());
+                        app.openRequestBook(libroSeleccionado);
+                    }
+
                 }
             }
         });
@@ -106,7 +130,7 @@ public class HomePageViewController {
                 LibroDigital libroSeleccionado = tablaLibrosDigitales.getSelectionModel().getSelectedItem();
                 if (libroSeleccionado != null) {
                     System.out.println("Libro seleccionado: " + libroSeleccionado.getEnlace());
-                    Stage stage = (Stage) tablaLibrosDigitales.getScene().getWindow(); // Obtenemos el Stage desde la tabla
+                    Stage stage = (Stage) tablaLibrosDigitales.getScene().getWindow();
 
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                     alert.initOwner(stage);
@@ -117,9 +141,7 @@ public class HomePageViewController {
 
                     alert.showAndWait().ifPresent(response -> {
                         if (response == ButtonType.OK) {
-                            // Aquí podrías abrir el enlace en el navegador si quieres
                             System.out.println("Abriendo: " + libroSeleccionado.getEnlace());
-                            // abrirEnlace(libroSeleccionado.getEnlace());
                         }
                     });
                 }
@@ -131,6 +153,10 @@ public class HomePageViewController {
         app.setUser(null);
         app.setRol("");
         app.openTypeUser();
+    }
+
+    private void openRequestsUser() {
+        app.openRequestsUser();
     }
 
     private void cargarLibros() {

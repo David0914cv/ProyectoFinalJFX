@@ -21,7 +21,7 @@ public class TypeUserViewController {
         if (buildOption().equals("Bibliotecario") || buildOption().equals("Administrador")){
             app.openLoginCredential();
         }
-        if (buildOption().equals("Estudiante") || buildOption().equals("Profesor") || buildOption().equals("Visitante")){
+        if (buildOption().equals("Estudiante") || buildOption().equals("Docente") || buildOption().equals("Visitante")){
             app.openLogin();
         }
        /*app.openLogin();*/

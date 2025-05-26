@@ -109,7 +109,7 @@ public class Bibliotecario extends Usuario {
         return false;
     }
 
-    public boolean actualizarBibliotecario(Biblioteca biblioteca, String numeroIdentificacionVisitante, Visitante visitante) {
+    public boolean actualizarVisitante(Biblioteca biblioteca, String numeroIdentificacionVisitante, Visitante visitante) {
         if (biblioteca == null || visitante == null) return false;
         Usuario usuario = biblioteca.mostrarUsuario(numeroIdentificacionVisitante);
         if (usuario instanceof Visitante) {
@@ -231,7 +231,7 @@ public class Bibliotecario extends Usuario {
         return false;
     }
 
-    public void actualizarEstadoUsuario(Biblioteca biblioteca, Usuario usuario, Boolean deuda) {
+    public void actualizarEstadoUsuario(Biblioteca biblioteca, Usuario usuario, boolean deuda) {
         EstadoUsuario nuevoEstado = deuda ? EstadoUsuario.EN_MORA : EstadoUsuario.PAZ_Y_SALVO;
         if (usuario instanceof Docente) {
             Docente docente = (Docente) usuario;
@@ -339,12 +339,12 @@ public class Bibliotecario extends Usuario {
 
     public String crearReporte(Biblioteca biblioteca) {
         StringBuilder reporte = new StringBuilder();
-        reporte.append("Libro más prestado: ").append(libroMasPrestado(biblioteca));
-        reporte.append("Libros prestados:\n");
+        reporte.append("\nLibro más prestado: ").append(libroMasPrestado(biblioteca));
+        reporte.append("\nLibros prestados:");
         for (Libro libro : biblioteca.getListLibrosPrestados()) {
             reporte.append(libro.getTitulo()).append("\t").append(libro.getCodigo()).append("\n");
         }
-        reporte.append("Usuarios en mora:\n");
+        reporte.append("\nUsuarios en mora:");
         for (Usuario usuario : biblioteca.getListUsuariosEnMora()) {
             reporte.append(usuario.getNombre()).append("\t").append(usuario.getNumeroIdentificacion()).append("\n");
         }

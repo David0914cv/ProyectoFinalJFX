@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="295.0" prefWidth="467.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.biblioteca.viewController.AddReturnViewController">
+   <children>
+      <Label layoutX="100.0" layoutY="37.0" text="Observaciones de la devolución">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="txtObservaciones" layoutX="100.0" layoutY="90.0" prefHeight="115.0" prefWidth="267.0" />
+      <Button layoutX="204.0" layoutY="233.0" mnemonicParsing="false" text="Guardar" onAction="#onAgregarDevolucion" />
+   </children>
+</AnchorPane>

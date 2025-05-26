@@ -193,6 +193,7 @@ public class Biblioteca {
     }
 
     public boolean agregarPrestamo(Prestamo prestamo) {
+        System.out.println(prestamo);
         if (verificarPrestamoExiste(prestamo)) {
             return false;
         } else {
@@ -336,6 +337,16 @@ public class Biblioteca {
         Libro libro = mostrarLibro(codigoLibro);
         if (libro != null && libro.getEstado() == EstadoLibro.DISPONIBLE) {
             return true;
+        }
+        return false;
+    }
+
+    public boolean actualizarSolicitudPrestamo(String codSolicitud, SolicitudPrestamo solicitudPrestamo) {
+        for (int i = 0; i < listSolicitudPrestamos.size(); i++) {
+            if (listSolicitudPrestamos.get(i).getId().equals(codSolicitud)) {
+                listSolicitudPrestamos.set(i, solicitudPrestamo);
+                return true;
+            }
         }
         return false;
     }

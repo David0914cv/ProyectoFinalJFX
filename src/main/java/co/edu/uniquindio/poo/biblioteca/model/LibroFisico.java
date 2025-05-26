@@ -5,8 +5,8 @@ public class LibroFisico extends Libro {
     private String numeroPaginas,editorial,ubicacionBiblioteca;
 
 
-    public LibroFisico(String codigo, String titulo, String autor, String genero, String anioPublicacion, EstadoLibro estado, String numeroPaginas, String editorial, String ubicacionBiblioteca) {
-        super(codigo, titulo, autor, genero, anioPublicacion, estado);
+    public LibroFisico(String codigo, String titulo, String autor, String genero, String anioPublicacion, String numeroPaginas, String editorial, String ubicacionBiblioteca) {
+        super(codigo, titulo, autor, genero, anioPublicacion);
         this.numeroPaginas = numeroPaginas;
         this.editorial = editorial;
         this.ubicacionBiblioteca = ubicacionBiblioteca;
@@ -38,10 +38,12 @@ public class LibroFisico extends Libro {
 
     @Override
     public String toString() {
-        return "LibroFisico{" +
-                "numeroPaginas='" + numeroPaginas + '\'' +
-                ", editorial='" + editorial + '\'' +
-                ", ubicacionBiblioteca='" + ubicacionBiblioteca + '\'' +
-                '}';
+        return "( "+getTitulo()+
+                " Del autor" +getAutor()+ '\'' +
+                " De la editorial "+editorial+ '\'' +
+                " publicado en el año "+getAnioPublicacion()+ '\'' +
+                " Con el código '" + getCodigo() + '\'' +
+                " Su ubicación en la biblioteca es " + ubicacionBiblioteca + '\'' +
+                ')';
     }
 }

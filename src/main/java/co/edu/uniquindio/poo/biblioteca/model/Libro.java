@@ -5,13 +5,13 @@ public class Libro {
     private int cantidadVecesPrestado;
     private EstadoLibro estado;
 
-    public Libro(String codigo, String titulo, String autor, String genero, String anioPublicacion, EstadoLibro estado) {
+    public Libro(String codigo, String titulo, String autor, String genero, String anioPublicacion) {
         this.codigo = codigo;
         this.titulo = titulo;
         this.autor = autor;
         this.genero = genero;
         this.anioPublicacion = anioPublicacion;
-        this.estado = estado;
+        this.estado = EstadoLibro.DISPONIBLE;
         this.cantidadVecesPrestado = 0;
     }
 

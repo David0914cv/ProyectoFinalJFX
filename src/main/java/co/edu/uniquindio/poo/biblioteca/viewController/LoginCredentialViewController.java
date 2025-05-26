@@ -49,8 +49,13 @@ public class LoginCredentialViewController {
         if (login.get("message").equals("login correct")){
             app.setRol(login.get("rol"));
             app.setUser(infoLogin.get("cedula"));
-            app.openHomePage();
-            System.out.println("Login Exitoso");
+
+            if (login.get("rol").equals("Administrador")){
+                System.out.println("Admin");
+            }
+            if (login.get("rol").equals("Bibliotecario")){
+                app.openHomePageBibliotecario();
+            }
         }
         if(login.get("message").equals("password incorrect")){
             System.out.println("Login Error");

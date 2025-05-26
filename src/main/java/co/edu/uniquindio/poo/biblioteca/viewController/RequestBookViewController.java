@@ -2,6 +2,8 @@ package co.edu.uniquindio.poo.biblioteca.viewController;
 
 import co.edu.uniquindio.poo.biblioteca.App;
 import co.edu.uniquindio.poo.biblioteca.controller.RequestBookController;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -21,6 +23,20 @@ public class RequestBookViewController {
         this.app = app;
         System.out.println(app.getLibroSolicitud());
         lblMessage.setText("¿Seguro que quiere solicitar el prestamo del libro '"+app.getLibroSolicitud().getTitulo()+"'?");
+        cargarOpciones();
+    }
+
+    private void cargarOpciones(){
+        ObservableList<String> opciones = FXCollections.observableArrayList(
+                "Entregar el mismo día",
+                "Entregar en 5 dias"
+        );
+
+        if (app.getRol().equals("Docente")){
+            opciones.add("Entregar en 10 dias");
+        }
+
+        choiceBox.setItems(opciones);
     }
 
     public void onSolicitar(){

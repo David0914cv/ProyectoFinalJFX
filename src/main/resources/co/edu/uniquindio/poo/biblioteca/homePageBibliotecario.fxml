@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="339.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.biblioteca.viewController.HomePageBibliotecarioViewController">
+   <children>
+      <Hyperlink layoutX="513.0" layoutY="14.0" onAction="#onLogout" text="Cerrar sesión" />
+      <Label layoutX="24.0" layoutY="16.0" text="UQ virtual">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="230.0" layoutY="53.0" text="Solicitudes de préstamos">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tablaSolicitudes" layoutX="58.0" layoutY="80.0" prefHeight="106.0" prefWidth="487.0">
+        <columns>
+            <TableColumn fx:id="colLibro" prefWidth="151.0" text="Libro" />
+            <TableColumn fx:id="colUsuario" prefWidth="179.0" text="Usuario" />
+            <TableColumn fx:id="colTiempo" prefWidth="155.0" text="Tiempo" />
+        </columns>
+      </TableView>
+      <Button layoutX="58.0" layoutY="220.0" mnemonicParsing="false" onAction="#onRegistroLibros" prefHeight="25.0" prefWidth="92.0" text="Registrar libro" />
+      <Button layoutX="247.0" layoutY="220.0" mnemonicParsing="false" onAction="#onRegistrarUsuario" text="Registrar usuario" />
+      <Button layoutX="458.0" layoutY="220.0" mnemonicParsing="false" onAction="#onOpenReturns" text="Devoluciones" />
+      <Button layoutX="250.0" layoutY="276.0" mnemonicParsing="false" text="Generar reporte" onAction="#onOpenReport" />
+   </children>
+</AnchorPane>

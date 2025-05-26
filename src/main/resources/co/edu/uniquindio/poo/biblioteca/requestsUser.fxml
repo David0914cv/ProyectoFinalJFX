@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="308.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.biblioteca.viewController.RequestsUserViewController">
+   <children>
+      <Label layoutX="41.0" layoutY="66.0" text="Solicitudes en proceso">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Label>
+      <Hyperlink layoutX="35.0" layoutY="14.0" onAction="#onBack" text="&lt;- Volver" />
+      <TableView fx:id="tableRequestsProcessing" layoutX="41.0" layoutY="124.0" prefHeight="131.0" prefWidth="505.0">
+        <columns>
+            <TableColumn fx:id="colLibro" prefWidth="156.0" text="Libro" />
+            <TableColumn fx:id="colTiempo" prefWidth="157.0" text="Tiempo préstamo" />
+            <TableColumn fx:id="colFecha" prefWidth="190.0" text="Fecha" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

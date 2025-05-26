@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.biblioteca.viewController.ReturnsViewController">
+   <children>
+      <Label layoutX="256.0" layoutY="38.0" text="Préstamos">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tablaPrestamos" layoutX="127.0" layoutY="85.0" prefHeight="164.0" prefWidth="346.0">
+        <columns>
+          <TableColumn fx:id="colUsuario" prefWidth="173.0" text="Usuario" />
+          <TableColumn fx:id="collibro" prefWidth="171.0" text="Libro" />
+        </columns>
+      </TableView>
+      <Hyperlink layoutX="38.0" layoutY="14.0" onAction="#onBack" text="&lt;- Volver" />
+      <TextField fx:id="txtIdUser" layoutX="300.0" layoutY="268.0" prefHeight="33.0" prefWidth="172.0" />
+      <Label layoutX="133.0" layoutY="267.0" prefHeight="17.0" prefWidth="134.0" text="Buscar por número de ">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="133.0" layoutY="284.0" text="identificación del usuario:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

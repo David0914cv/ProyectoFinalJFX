@@ -4,10 +4,10 @@ public class Estudiante extends Usuario{
     private int cantidadlibrosPrestados;
     private EstadoUsuario estadoUsuario;
 
-    public Estudiante(String nombre, String numeroIdentificacion, String contrasenia, EstadoUsuario estadoUsuario) {
+    public Estudiante(String nombre, String numeroIdentificacion, String contrasenia) {
         super(nombre, numeroIdentificacion, contrasenia);
         this.cantidadlibrosPrestados = 0;
-        this.estadoUsuario = estadoUsuario;
+        this.estadoUsuario = EstadoUsuario.PAZ_Y_SALVO;
     }
 
     public int getCantidadlibrosPrestados() {
@@ -24,5 +24,14 @@ public class Estudiante extends Usuario{
 
     public void setEstadoUsuario(EstadoUsuario estadoUsuario) {
         this.estadoUsuario = estadoUsuario;
+    }
+
+    @Override
+    public String toString() {
+        return "Estudiante{" +
+                "nombre="+ getNombre()+
+                "cantidadlibrosPrestados=" + cantidadlibrosPrestados +
+                ", estadoUsuario=" + estadoUsuario +
+                '}';
     }
 }

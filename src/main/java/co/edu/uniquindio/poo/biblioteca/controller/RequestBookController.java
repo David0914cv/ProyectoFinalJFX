@@ -23,11 +23,11 @@ public class RequestBookController {
         if (tiempo.equals("Entregar el mismo día")){
             tiempoPrestamo = TiempoPrestamo.MISMO_DIA;
         }
-        if (tiempo.equals("Entregar en una semana")){
-            tiempoPrestamo = TiempoPrestamo.UNA_SEMANA;
+        if (tiempo.equals("Entregar en 5 dias")){
+            tiempoPrestamo = TiempoPrestamo.CINCO_DIAS;
         }
-        if (tiempo.equals("Entregrar en dos semanas")){
-            tiempoPrestamo = TiempoPrestamo.DOS_SEMANAS;
+        if (tiempo.equals("Entregar en 10 dias")){
+            tiempoPrestamo = TiempoPrestamo.DIEZ_DIAZ;
         }
 
         SolicitudPrestamo solicitudPrestamo = new SolicitudPrestamo(id,user,libro,tiempoPrestamo);

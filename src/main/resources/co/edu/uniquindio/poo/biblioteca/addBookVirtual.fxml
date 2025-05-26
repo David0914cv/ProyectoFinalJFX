@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.biblioteca.viewController.AddBookVirtualViewController">
+    <children>
+        <Label layoutX="222.0" layoutY="31.0" text="Registro de libro">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </Label>
+        <TextField fx:id="txtCodigo" layoutX="150.0" layoutY="91.0" prefHeight="25.0" prefWidth="393.0" />
+        <TextField fx:id="txtTitulo" layoutX="150.0" layoutY="134.0" prefHeight="25.0" prefWidth="393.0" />
+        <TextField fx:id="txtAutor" layoutX="150.0" layoutY="175.0" prefHeight="25.0" prefWidth="393.0" />
+        <TextField fx:id="txtGenero" layoutX="150.0" layoutY="218.0" prefHeight="25.0" prefWidth="393.0" />
+        <TextField fx:id="txtAnioPublicacion" layoutX="150.0" layoutY="260.0" prefHeight="25.0" prefWidth="393.0" />
+        <TextField fx:id="txtEnlace" layoutX="150.0" layoutY="350.0" prefHeight="25.0" prefWidth="393.0" />
+        <Label layoutX="31.0" layoutY="91.0" prefHeight="25.0" prefWidth="111.0" text="Código:">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label layoutX="31.0" layoutY="134.0" prefHeight="25.0" prefWidth="111.0" text="Título:">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label layoutX="31.0" layoutY="178.0" prefHeight="20.0" prefWidth="52.0" text="Autor:">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label layoutX="31.0" layoutY="221.0" text="Género:">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font></Label>
+        <Label layoutX="31.0" layoutY="263.0" text="Año publicación:">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <Button layoutX="267.0" layoutY="444.0" mnemonicParsing="false" onAction="#onAgregarLibro" prefHeight="25.0" prefWidth="67.0" text="Agregar" />
+        <Label layoutX="31.0" layoutY="302.0" prefHeight="30.0" prefWidth="117.0" text="Formato:">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label layoutX="31.0" layoutY="353.0" text="Enlace:">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <ChoiceBox fx:id="choiceBox" layoutX="147.0" layoutY="305.0" prefHeight="25.0" prefWidth="393.0" >
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="PDF" />
+                    <String fx:value="EPUB" />
+                    <String fx:value="MOBI" />
+                </FXCollections>
+            </items>
+        </ChoiceBox>
+
+    </children>
+
+</AnchorPane>
