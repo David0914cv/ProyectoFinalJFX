@@ -52,6 +52,11 @@ public class HomePageAdminViewController {
     }
 
     @FXML
+    void onLogout(){
+        logout();
+    }
+
+    @FXML
     void onActualizar(){
         actualizarUsuario();
     }
@@ -172,6 +177,12 @@ public class HomePageAdminViewController {
             alert.setContentText("Error al actualizar usuario");
             alert.showAndWait();
         }
+    }
+
+    private void logout(){
+        app.setUser(null);
+        app.setRol("");
+        app.openTypeUser();
     }
 
 }
