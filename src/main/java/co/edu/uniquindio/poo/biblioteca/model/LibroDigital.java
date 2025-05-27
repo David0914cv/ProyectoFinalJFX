@@ -39,8 +39,11 @@ public class LibroDigital extends Libro {
 
     @Override
     public String toString() {
-        return "LibroDigital{" +
-                "formato=" + formato +
-                '}';
+        return "( "+getTitulo()+
+                " Del autor" +getAutor()+ '\'' +
+                " publicado en el año "+getAnioPublicacion()+ '\'' +
+                " Con el código '" + getCodigo() + '\'' +
+                " con enlace '" + enlace + '\'' +
+                ')';
     }
 }

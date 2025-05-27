@@ -112,6 +112,7 @@ public class HomePageBibliotecarioViewController {
                                     homePageBibliotecarioController.actualizarEstudiante(estudiante,bibliotecario);
                                     Libro libro=solicitudPrestamo.getLibroSolicitado();
                                     libro.setEstado(EstadoLibro.PRESTADO);
+                                    libro.setCantidadVecesPrestado(libro.getCantidadVecesPrestado()+1);
                                     solicitudPrestamo.setEstado(EstadoSolicitud.APROBADA);
                                     homePageBibliotecarioController.actuaizarLibro(bibliotecario,libro);
                                     homePageBibliotecarioController.actuaizarSolicitud(solicitudPrestamo);
@@ -123,6 +124,7 @@ public class HomePageBibliotecarioViewController {
                                     homePageBibliotecarioController.actualizarDocente(docente,bibliotecario);
                                     Libro libro=solicitudPrestamo.getLibroSolicitado();
                                     libro.setEstado(EstadoLibro.PRESTADO);
+                                    libro.setCantidadVecesPrestado(libro.getCantidadVecesPrestado()+1);
                                     solicitudPrestamo.setEstado(EstadoSolicitud.APROBADA);
                                     homePageBibliotecarioController.actuaizarLibro(bibliotecario,libro);
                                     homePageBibliotecarioController.actuaizarSolicitud(solicitudPrestamo);

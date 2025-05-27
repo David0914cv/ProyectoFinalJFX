@@ -34,10 +34,7 @@ public class Estudiante extends Usuario{
 
     @Override
     public String toString() {
-        return "Estudiante{" +
-                "nombre="+ getNombre()+
-                "cantidadlibrosPrestados=" + cantidadlibrosPrestados +
-                ", estadoUsuario=" + estadoUsuario +
-                '}';
+        return getNombre() + '\'' +
+                ", con numero de identificacion='" + getNumeroIdentificacion();
     }
 }

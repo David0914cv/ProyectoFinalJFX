@@ -12,4 +12,9 @@ public class Visitante extends Usuario {
         super(nombre, numeroIdentificacion, contrasenia);
     }
 
+    @Override
+    public String toString() {
+        return getNombre() + '\'' +
+                ", con numero de identificacion='" + getNumeroIdentificacion();
+    }
 }

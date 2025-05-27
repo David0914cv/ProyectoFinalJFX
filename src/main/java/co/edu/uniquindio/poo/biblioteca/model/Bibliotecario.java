@@ -583,8 +583,7 @@ public class Bibliotecario extends Usuario {
 
     @Override
     public String toString() {
-        return "Bibliotecario{" +
-                "credencialBibliotecario='" + credencialBibliotecario + '\'' +
-                '}';
+        return getNombre() + '\'' +
+                ", con numero de identificacion='" + getNumeroIdentificacion();
     }
 }

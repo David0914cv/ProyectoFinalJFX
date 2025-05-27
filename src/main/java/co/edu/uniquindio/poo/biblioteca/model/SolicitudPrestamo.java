@@ -77,13 +77,9 @@ public class SolicitudPrestamo {
 
     @Override
     public String toString() {
-        return "SolicitudPrestamo{" +
-                "id='" + id + '\'' +
-                ", solicitante=" + solicitante +
-                ", libroSolicitado=" + libroSolicitado +
-                ", fechaSolicitud=" + fechaSolicitud +
-                ", tiempoPrestamo=" + tiempoPrestamo +
-                ", estado=" + estado +
-                '}';
+        return "Solicitud de prestamo por: " + solicitante.getNombre() +
+                " libro solicitado:" + libroSolicitado.getTitulo() +
+                " solicitado la fecha: " + fechaSolicitud +
+                " por un tiempo de " + tiempoPrestamo;
     }
 }

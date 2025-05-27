@@ -32,6 +32,12 @@ public class Biblioteca {
         listSolicitudPrestamos = new ArrayList<>();
     }
 
+    /**
+     * Metodo para iniciar sesion, donde se verfica que esten correctos los datos recibidos en un HashMap
+     * @param formLogin
+     * @return
+     */
+
     public Map<String,String> loginUsuario(Map<String,String> formLogin) {
         Map<String,String> resultado = new HashMap<>();
         boolean bandera = false;
@@ -58,6 +64,12 @@ public class Biblioteca {
         }
         return resultado;
     }
+
+    /**
+     * Metodo para iniciar sesion con credencial, donde se verfica que esten correctos los datos recibidos en un HashMap
+     * @param formLogin
+     * @return
+     */
 
     public Map<String,String> loginUsuarioCredencial(Map<String,String> formLogin) {
         Map<String,String> resultado = new HashMap<>();

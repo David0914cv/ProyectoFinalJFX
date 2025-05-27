@@ -79,12 +79,11 @@ public class Prestamo {
 
     @Override
     public String toString() {
-        return "Prestamo{" +
-                "id='" + id + '\'' +
-                ", fechaInicio='" + fechaInicio + '\'' +
-                ", fechaFin='" + fechaFin + '\'' +
-                ", Prestamista=" + usuario +
-                ", bibliotecario=" + bibliotecario +
+        return "Prestamo" +
+                " con fecha de inicio: " + fechaInicio + '\'' +
+                " con fecha final:" + fechaFin + '\'' +
+                " Prestado a: " + usuario.getNombre() +
+                " por el bibliotecario=" + bibliotecario.getNombre() +
                 '}';
     }
 }

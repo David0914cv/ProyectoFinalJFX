@@ -110,12 +110,8 @@ public class Administrador extends Usuario {
 
     @Override
     public String toString() {
-        return "Administrador{" +
-                "credencial='" + credencial + '\'' +
-                "nombre='" + getNombre() + '\'' +
-                ", numeroIdentificacion='" + getNumeroIdentificacion() + '\'' +
-                ", contrasenia='" + getContrasenia() + '\'' +
-                '}';
+        return getNombre() + '\'' +
+                ", con numero de identificacion='" + getNumeroIdentificacion();
     }
 }
 

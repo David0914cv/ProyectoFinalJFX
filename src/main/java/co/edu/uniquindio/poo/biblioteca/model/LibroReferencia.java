@@ -14,4 +14,12 @@ public class LibroReferencia extends Libro {
         super(codigo, titulo, autor, genero, anioPublicacion);
     }
 
+    @Override
+    public String toString() {
+        return "( "+getTitulo()+
+                " Del autor" +getAutor()+ '\'' +
+                " publicado en el año "+getAnioPublicacion()+ '\'' +
+                " Con el código '" + getCodigo() + '\'' +
+                ')';
+    }
 }

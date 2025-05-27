@@ -21,4 +21,10 @@ public class Docente extends Usuario {
     public void setEstadoUsuario(EstadoUsuario estadoUsuario) {
         this.estadoUsuario = estadoUsuario;
     }
+
+    @Override
+    public String toString() {
+        return getNombre() + '\'' +
+                ", con numero de identificacion='" + getNumeroIdentificacion();
+    }
 }

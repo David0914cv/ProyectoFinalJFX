@@ -42,10 +42,7 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario{" +
-                "nombre='" + nombre + '\'' +
-                ", numeroIdentificacion='" + numeroIdentificacion + '\'' +
-                ", contrasenia='" + contrasenia + '\'' +
-                '}';
+        return nombre + '\'' +
+                ", con numero de identificacion='" + numeroIdentificacion;
     }
 }
