@@ -30,6 +30,11 @@ public class AddTeacherViewController {
         agregarDocente();
     }
 
+    @FXML
+    void onBack(){
+        app.openHomePageBibliotecario();
+    }
+
     private void agregarDocente() {
         Bibliotecario bibliotecario= null;
         for (Usuario usuario:addTeacherController.getListUsuarios()){

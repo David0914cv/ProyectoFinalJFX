@@ -19,6 +19,11 @@ public class RequestBookViewController {
     @FXML
     private Label lblMessage;
 
+    @FXML
+    void onBack(){
+        app.openHomePage();
+    }
+
     public void setApp(App app) {
         this.app = app;
         System.out.println(app.getLibroSolicitud());

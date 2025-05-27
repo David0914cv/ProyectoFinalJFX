@@ -38,6 +38,11 @@ public class LoginViewController {
     }
 
     @FXML
+    void onBack(){
+        app.openTypeUser();
+    }
+
+    @FXML
     void initialize() {
         loginController = new LoginController(app.biblioteca);
     }

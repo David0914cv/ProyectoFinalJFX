@@ -26,6 +26,11 @@ public class AddStudentViewController {
         agregarEstudiante();
     }
 
+    @FXML
+    void onBack(){
+        app.openHomePageBibliotecario();
+    }
+
     private void agregarEstudiante() {
         Bibliotecario bibliotecario= null;
         for (Usuario usuario:addStudentController.getListUsuarios()){

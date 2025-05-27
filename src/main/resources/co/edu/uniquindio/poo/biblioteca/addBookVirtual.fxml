@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.collections.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.biblioteca.viewController.AddBookVirtualViewController">
+<AnchorPane prefHeight="488.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.biblioteca.viewController.AddBookVirtualViewController">
     <children>
         <Label layoutX="222.0" layoutY="31.0" text="Registro de libro">
             <font>
@@ -54,7 +54,7 @@
                 <Font name="System Bold" size="14.0" />
             </font>
         </Label>
-        <ChoiceBox fx:id="choiceBox" layoutX="147.0" layoutY="305.0" prefHeight="25.0" prefWidth="393.0" >
+        <ChoiceBox fx:id="choiceBox" layoutX="147.0" layoutY="305.0" prefHeight="25.0" prefWidth="393.0">
             <items>
                 <FXCollections fx:factory="observableArrayList">
                     <String fx:value="PDF" />
@@ -63,6 +63,7 @@
                 </FXCollections>
             </items>
         </ChoiceBox>
+      <Hyperlink layoutX="271.0" layoutY="402.0" text="&lt;- Volver" onAction="#onBack" />
 
     </children>
 

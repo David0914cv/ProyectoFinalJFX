@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.collections.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
@@ -13,8 +11,9 @@
                 <Font name="System Bold" size="20.0" />
             </font>
         </Label>
-        <Label fx:id="lblMessage" layoutY="77.0" prefHeight="17.0" prefWidth="505.0" alignment="CENTER" textAlignment="CENTER" wrapText="true" />
-        <ChoiceBox fx:id="choiceBox" layoutX="176.0" layoutY="124.0" prefWidth="150.0"/>
-        <Button layoutX="227.0" layoutY="188.0" mnemonicParsing="false" onAction="#onSolicitar" text="Solicitar" />
+        <Label fx:id="lblMessage" alignment="CENTER" layoutY="77.0" prefHeight="17.0" prefWidth="505.0" textAlignment="CENTER" wrapText="true" />
+        <ChoiceBox fx:id="choiceBox" layoutX="176.0" layoutY="124.0" prefWidth="150.0" />
+        <Button layoutX="222.0" layoutY="189.0" mnemonicParsing="false" onAction="#onSolicitar" text="Solicitar" />
+      <Hyperlink layoutX="222.0" layoutY="158.0" text="&lt;- Volver" onAction="#onBack" />
     </children>
 </AnchorPane>

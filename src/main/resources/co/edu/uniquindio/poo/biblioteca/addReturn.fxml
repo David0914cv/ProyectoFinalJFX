@@ -12,6 +12,7 @@
          </font>
       </Label>
       <TextArea fx:id="txtObservaciones" layoutX="100.0" layoutY="90.0" prefHeight="115.0" prefWidth="267.0" />
-      <Button layoutX="204.0" layoutY="233.0" mnemonicParsing="false" text="Guardar" onAction="#onAgregarDevolucion" />
+      <Button layoutX="204.0" layoutY="250.0" mnemonicParsing="false" onAction="#onAgregarDevolucion" text="Guardar" />
+      <Hyperlink layoutX="204.0" layoutY="218.0" text="&lt;- Volver" onAction="#onBack" />
    </children>
 </AnchorPane>

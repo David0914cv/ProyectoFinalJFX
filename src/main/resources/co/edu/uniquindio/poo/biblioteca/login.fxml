@@ -35,6 +35,7 @@
                                 <PasswordField fx:id="txtContrasenia" layoutX="150.0" layoutY="154.0" prefHeight="25.0" prefWidth="246.0" />
                                 <Button fx:id="btbLogin" layoutX="172.0" layoutY="241.0" mnemonicParsing="false" onAction="#onLogin" text="Iniciar sesión" />
                         <Label fx:id="lblNoLogin" layoutX="200.0" layoutY="204.0" />
+                        <Hyperlink layoutX="185.0" layoutY="210.0" text="&lt;- Volver" onAction="#onBack" />
 
                             </children>
                         </Pane>

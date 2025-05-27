@@ -18,6 +18,11 @@ public class AddReturnViewController {
     App app;
 
     @FXML
+    void onBack(){
+        app.openHomePageBibliotecario();
+    }
+
+    @FXML
     void onAgregarDevolucion(){
         agrgarDevolucion();
     }

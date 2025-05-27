@@ -38,6 +38,11 @@ public class AddBookVirtualViewController {
     App app;
 
     @FXML
+    void onBack(){
+        app.openHomePageBibliotecario();
+    }
+
+    @FXML
     void onAgregarLibro(){
         agregarLibro();
     }

@@ -36,6 +36,12 @@ public class LoginCredentialViewController {
     }
 
     @FXML
+    void onBack(){
+        app.openTypeUser();
+    }
+
+
+    @FXML
     void initialize() {
 
         loginCredentialController = new LoginCredentialController(app.biblioteca);

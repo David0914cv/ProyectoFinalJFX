@@ -30,6 +30,11 @@ public class AddVisitantViewController {
         agregarVisitante();
     }
 
+    @FXML
+    void onBack(){
+        app.openHomePageBibliotecario();
+    }
+
     private void agregarVisitante() {
         Bibliotecario bibliotecario= null;
         for (Usuario usuario:addVisitantController.getListUsuarios()){

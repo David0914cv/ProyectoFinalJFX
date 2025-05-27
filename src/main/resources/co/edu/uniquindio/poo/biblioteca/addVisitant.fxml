@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<?import javafx.scene.text.Font?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="co.edu.uniquindio.poo.biblioteca.viewController.AddVisitantViewController"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.biblioteca.viewController.AddVisitantViewController">
 
     <children>
         <Label layoutX="195.0" layoutY="31.0" text="Registro de estudiante">
@@ -37,12 +31,13 @@
                 <Font name="System Bold" size="14.0" />
             </font>
         </Label>
-        <Button layoutX="267.0" layoutY="288.0" mnemonicParsing="false" onAction="#onAgregarVisitante" prefHeight="25.0" prefWidth="67.0" text="Agregar" />
+        <Button layoutX="268.0" layoutY="319.0" mnemonicParsing="false" onAction="#onAgregarVisitante" prefHeight="25.0" prefWidth="67.0" text="Agregar" />
         <Label layoutX="31.0" layoutY="164.0" text="identificación:">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
         </Label>
+      <Hyperlink layoutX="271.0" layoutY="279.0" text="&lt;- Volver" onAction="#onBack" />
 
     </children>
 

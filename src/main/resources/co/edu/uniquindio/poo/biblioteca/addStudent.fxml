@@ -36,6 +36,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
+      <Hyperlink layoutX="271.0" layoutY="258.0" text="&lt;- Volver" onAction="#onBack" />
 
     </children>
 
